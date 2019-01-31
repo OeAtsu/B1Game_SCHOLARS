@@ -6,13 +6,16 @@ using UnityEngine.Playables;
 
 public class TriggerTimeline : MonoBehaviour {
 
-    public PlayableDirector playableDirector;
     
-    
-        public void play() {
+
+        public PlayableDirector playableDirector;
+        private void OnTriggerEnter(Collider other){
 
         playableDirector.Play();
 
         }
-    }
+    
+}
+   
+    
 
