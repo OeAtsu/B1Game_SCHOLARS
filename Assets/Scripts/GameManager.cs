@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
 
 
 
-        if (Input.GetKey(KeyCode.DownArrow) && vectorgravity.y > -14)
+        if (Input.GetKey(KeyCode.DownArrow) && vectorgravity.y > -20)
         {
             vectorgravity = vectorgravity + new Vector3(0, -0.1f, 0);
             Physics.gravity = vectorgravity;
