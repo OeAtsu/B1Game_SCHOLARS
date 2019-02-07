@@ -40,7 +40,7 @@ MonoBehaviour:
   updateITimeControl: 1
   searchHierarchy: 1
   active: 1
-  postPlayback: 2
+  postPlayback: 1
 --- !u!114 &114917674872500154
 MonoBehaviour:
   m_ObjectHideFlags: 1
