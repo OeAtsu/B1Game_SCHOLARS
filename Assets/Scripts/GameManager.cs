@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public Vector3 vectorgravity;
 
+    public Slider mainSlider;
 
     public Text Current_Gravity; // assign it from inspector
 
@@ -31,13 +32,13 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.UpArrow) && vectorgravity.y < -1)
         {
-            vectorgravity = vectorgravity + new Vector3(0, 0.05f, 0);
+            vectorgravity = vectorgravity + new Vector3(0, 0.1f, 0);
             Physics.gravity = vectorgravity;
         }
         //retour a -10
         if (vectorgravity.y < -10 && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
         {
-            vectorgravity = vectorgravity + new Vector3(0, +0.05f, 0);
+            vectorgravity = vectorgravity + new Vector3(0, +0.2f, 0);
             Physics.gravity = vectorgravity;
         }
 
@@ -48,15 +49,17 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.DownArrow) && vectorgravity.y > -14)
         {
-            vectorgravity = vectorgravity + new Vector3(0, -0.05f, 0);
+            vectorgravity = vectorgravity + new Vector3(0, -0.1f, 0);
             Physics.gravity = vectorgravity;
         }
         //retour a -10
         if (vectorgravity.y > -10 && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
         {
-            vectorgravity = vectorgravity + new Vector3(0, -0.05f, 0);
+            vectorgravity = vectorgravity + new Vector3(0, -0.2f, 0);
             Physics.gravity = vectorgravity;
         }
+
+        mainSlider.value = vectorgravity.y;
 
     }
 
