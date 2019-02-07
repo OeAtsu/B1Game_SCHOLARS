@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour {
 
     public Slider mainSlider;
 
-    public Text Current_Gravity; // assign it from inspector
-
-
 
     // Use this for initialization
     void Start () {
@@ -26,9 +23,6 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        float CurrentGravity = vectorgravity[1];
-        
-        Current_Gravity.text = CurrentGravity.ToString();
 
         if (Input.GetKey(KeyCode.UpArrow) && vectorgravity.y < -1)
         {
