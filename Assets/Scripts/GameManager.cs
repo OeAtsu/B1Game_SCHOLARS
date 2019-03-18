@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour {
     void Update () {
 
 
-        if (Input.GetKey(KeyCode.UpArrow) && vectorgravity.y < -1)
+        if (Input.GetAxis("analogr")>0 && vectorgravity.y < -1)
         {
-            vectorgravity = vectorgravity + new Vector3(0, 0.1f, 0);
+            vectorgravity = vectorgravity + new Vector3(0, 0.5f * Input.GetAxis("analogr"), 0);
             Physics.gravity = vectorgravity;
         }
         //retour a -10
-        if (vectorgravity.y < -10 && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+        if (vectorgravity.y < -10 && Input.GetAxis("analogr") == 0 && Input.GetAxis("analogl") == 0)
         {
             vectorgravity = vectorgravity + new Vector3(0, +0.2f, 0);
             Physics.gravity = vectorgravity;
@@ -38,16 +38,13 @@ public class GameManager : MonoBehaviour {
 
 
 
-
-
-
-        if (Input.GetKey(KeyCode.DownArrow) && vectorgravity.y > -20)
+        if (Input.GetAxis("analogl")>0 && vectorgravity.y > -20)
         {
-            vectorgravity = vectorgravity + new Vector3(0, -0.1f, 0);
+            vectorgravity = vectorgravity + new Vector3(0, -0.5f* Input.GetAxis("analogl"), 0);
             Physics.gravity = vectorgravity;
         }
         //retour a -10
-        if (vectorgravity.y > -10 && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
+        if (vectorgravity.y > -10 && Input.GetAxis("analogl") == 0 && Input.GetAxis("analogr") == 0)
         {
             vectorgravity = vectorgravity + new Vector3(0, -0.2f, 0);
             Physics.gravity = vectorgravity;
