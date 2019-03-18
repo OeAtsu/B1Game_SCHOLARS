@@ -11,16 +11,23 @@ public class UiManagerAccueil : MonoBehaviour {
     public float analogr = 0f;
     public float analogl = 0f;
     public bool go = false;
+    public Text TimerText;
+    public string timer;
+
+
     // Use this for initialization
     void Start () {
         YourAnimator.SetBool("open", false);
         text.SetBool("shaketext", false);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        timer = GameObject.Find("GameManager").GetComponent<GameManager>().timerFormatted;
+        TimerText.text = timer;
         analogr = (Input.GetAxis("analogr"));
         analogl = (Input.GetAxis("analogl"));
         if (analogr > 0 && analogl > 0)
