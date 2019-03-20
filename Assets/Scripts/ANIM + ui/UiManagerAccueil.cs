@@ -26,7 +26,7 @@ public class UiManagerAccueil : MonoBehaviour {
     void Update()
     {
 
-        timer = GameObject.Find("GameManager").GetComponent<GameManager>().timerFormatted;
+        timer = GameObject.Find("GameControler").GetComponent<GameControler>().timerFormatted;
         TimerText.text = timer;
         analogr = (Input.GetAxis("analogr"));
         analogl = (Input.GetAxis("analogl"));
