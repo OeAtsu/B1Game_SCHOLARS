@@ -10,6 +10,7 @@ public class ColorAbsorb : MonoBehaviour {
     public Material material1;
     public Material material2;
     private CleanningOrbitObject OrbitPlayer;
+    public float distanceScore;
     //Creation de variable de type rendu
     Renderer rend;
 
@@ -25,9 +26,13 @@ public class ColorAbsorb : MonoBehaviour {
     //CoolDown
     public float timeStamp;
 
+    //Score
+    public bool isAlreadyScored = false;
+    public int ToInt;
+
     void Start()
     {
-    
+        distanceScore = Vector3.Distance(GravityObjectManager.instance.transform.position,transform.position);
         // Variable rend prend les paramètres du composant "renderer" de l'objet auquel le script est associé
         rend = GetComponent<Renderer>();
 
@@ -38,8 +43,16 @@ public class ColorAbsorb : MonoBehaviour {
 
     void Update()
     {
-        if (lerp == 1f) // Pour se faire rattraper par le centre
+        if (lerp == 1f) // Pour se faire rattraper par le centre et score
         {
+            if (isAlreadyScored == false)
+            {
+                ToInt = (int)(distanceScore * 1.2f);
+                GameManager.instance.Score += ToInt; 
+                isAlreadyScored = true;
+            }
+           
+
             PlayerManager.instance.timeLeft -= Time.deltaTime; // lance le timer
             if (PlayerManager.instance.timeLeft < 0)
             {

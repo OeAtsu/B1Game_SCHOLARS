@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public string timerFormatted;
     public bool timeStarted = false;
 
+    public int Score;
+    public int AmountBonusPoint = 20;
+
 
 
     //Awake is always called before any Start functions for Singleton
@@ -39,9 +42,8 @@ public class GameManager : MonoBehaviour
         // Use this for initialization
         void Start()
     {
-       
-
-    }
+        Score = 0;
+}
 
     // Update is called once per frame
     void Update()

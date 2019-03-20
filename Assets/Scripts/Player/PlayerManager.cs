@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
     Vector3 Direction; // pour le calcul de la direction 
 
 
+
     void Awake()
     {
         //Check if instance already exists
@@ -55,9 +56,9 @@ public class PlayerManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         MyState();
-        if (!(Input.GetKeyDown(KeyCode.UpArrow))) // Velocity control
+        if (!(Input.GetKeyDown(KeyCode.Space))) // Velocity control
         {
             Direction = gameObject.GetComponent<Rigidbody>().velocity.normalized;
 
@@ -69,13 +70,13 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (myState == StatesOfGrav.OnGravCenter))
+        if (Input.GetKeyDown(KeyCode.Space) && (myState == StatesOfGrav.OnGravCenter))
         {
          
             myState = StatesOfGrav.Free; //Change l'etat du player en Free
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (myState == StatesOfGrav.IsCleaning))
+        if (Input.GetKeyDown(KeyCode.Space) && (myState == StatesOfGrav.IsCleaning))
         {
             if (isGravObject == true)
             {
@@ -84,7 +85,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.UpArrow) && (myState == StatesOfGrav.Free))
+        if (Input.GetKeyUp(KeyCode.Space) && (myState == StatesOfGrav.Free))
         {
             myState = StatesOfGrav.OnGravCenter; //Change l'etat du player en GravCenter
         }
@@ -113,6 +114,11 @@ public class PlayerManager : MonoBehaviour
             OrbitPlayer.target = other.gameObject.GetComponent<Transform>();
 
             myState = StatesOfGrav.IsCleaning; // Passe en netoyage
+        }
+        if (other.gameObject.CompareTag("BonusPoints"))
+        {
+            GameManager.instance.Score += GameManager.instance.AmountBonusPoint;
+            Destroy(other.gameObject);
         }
     }
 
@@ -143,4 +149,5 @@ public class PlayerManager : MonoBehaviour
             isGravObject = true;
         }
     }
+    
 }

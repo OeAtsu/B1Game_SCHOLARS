@@ -11,8 +11,12 @@ public class UiManagerAccueil : MonoBehaviour {
     public float analogr = 0f;
     public float analogl = 0f;
     public bool go = false;
+
     public Text TimerText;
     public string timer;
+
+    public Text ScoreText;
+    public string Score;
 
 
     // Use this for initialization
@@ -30,6 +34,10 @@ public class UiManagerAccueil : MonoBehaviour {
         TimerText.text = timer;
         analogr = (Input.GetAxis("analogr"));
         analogl = (Input.GetAxis("analogl"));
+
+        Score = GameManager.instance.Score.ToString();
+        ScoreText.text = ("SCORE : " + Score);
+
         if (analogr > 0 && analogl > 0)
         {
             YourAnimator.SetBool("shake", true);

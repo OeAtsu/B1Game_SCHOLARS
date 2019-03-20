@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Trigger
   - Platforms
+  - OrbitPoint
+  - Plateforme
+  - BonusPoints
   layers:
   - Default
   - TransparentFX

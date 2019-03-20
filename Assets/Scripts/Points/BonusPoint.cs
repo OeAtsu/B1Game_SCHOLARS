@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BonusPoint : MonoBehaviour {
 
-    int ptsBonus = 50000;
+   public int ptsBonus = 50000;
 
     // Use this for initialization
     void Start()

@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004265043510986}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4830173756127096}
@@ -308,9 +308,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material1: {fileID: 2100000, guid: 92708b6a9094b4b5ea1c08529f33934a, type: 2}
   material2: {fileID: 2100000, guid: fd2d592064f6a6440a4395d7500606e6, type: 2}
+  distanceScore: 0
   duration: 20
   lerp: 0
   timeStamp: 0
+  isAlreadyScored: 0
+  ToInt: 0
 --- !u!114 &114544292092088832
 MonoBehaviour:
   m_ObjectHideFlags: 1
