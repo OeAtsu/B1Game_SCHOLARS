@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         MyState();
-        if (!Input.GetKeyDown(KeyCode.UpArrow)) // Velocity control
+        if (!(Input.GetKeyDown(KeyCode.UpArrow))) // Velocity control
         {
             Direction = gameObject.GetComponent<Rigidbody>().velocity.normalized;
 
@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && (myState == StatesOfGrav.OnGravCenter))
         {
+         
             myState = StatesOfGrav.Free; //Change l'etat du player en Free
         }
 
@@ -78,7 +79,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (isGravObject == true)
             {
-                Debug.Log("Je veux partir");
+
                 myState = StatesOfGrav.Free; //Change l'etat du player en Free
             }
         }

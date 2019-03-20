@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject Drone;
     public OrbitCenterPlayer orbitCenterPlayer;
 
-    public Vector3 vectorgravity;
     public float G = 9f;
+
+    public static float timer = 120;
+    public string timerFormatted;
+    public bool timeStarted = false;
 
 
 
@@ -42,6 +45,34 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+
+        //TIMER
+        timeStarted = true; // ATTTENTION A MODIF 
+
+        if (timeStarted == true)
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (timer <= 0)
+        {
+            GameOver();
+        }
+
+        float minutes = Mathf.Floor(timer / 60);
+        float seconds = timer % 60;
+
+        minutes = Mathf.FloorToInt(timer / 60F);
+        seconds = Mathf.FloorToInt(timer - minutes * 60);
+        System.TimeSpan t = System.TimeSpan.FromSeconds(timer);
+        timerFormatted = string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
+        //END TIMER
+
+    }
+
+
+    void GameOver()
     {
 
     }

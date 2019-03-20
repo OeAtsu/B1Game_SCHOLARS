@@ -52,7 +52,7 @@ public class ColorAbsorb : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player")) // Contact avec Player
         {
-            Debug.Log("c'est fait");
+
             PlayerManager.instance.timeLeft = 5f;
             OrbitPlayer = other.gameObject.GetComponent<CleanningOrbitObject>(); // prend le transform sur lequel orbiter
         }
