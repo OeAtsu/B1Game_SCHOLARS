@@ -36,7 +36,7 @@ public class UiManagerAccueil : MonoBehaviour {
         analogl = (Input.GetAxis("analogl"));
 
         Score = GameManager.instance.Score.ToString();
-        ScoreText.text = ("SCORE : " + Score);
+        ScoreText.text = ("score : " + Score);
 
         if (analogr > 0 && analogl > 0)
         {
