@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public float G = 9f;
 
-    public static float timer = 120;
+    public static float timer = 300;
     public string timerFormatted;
     public bool timeStarted = false;
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
 
         //TIMER
-        timeStarted = true; // ATTTENTION A MODIF 
+        // ATTTENTION A MODIF 
 
         if (timeStarted == true)
         {

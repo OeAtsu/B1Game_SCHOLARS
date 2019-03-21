@@ -21,8 +21,6 @@ public class UiManagerAccueil : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        YourAnimator.SetBool("open", false);
-        text.SetBool("shaketext", false);
 
     }
 
@@ -40,16 +38,14 @@ public class UiManagerAccueil : MonoBehaviour {
 
         if (analogr > 0 && analogl > 0)
         {
-            YourAnimator.SetBool("shake", true);
-            text.SetBool("shaketext", true);
+
             go = true;
         }
 
 
         if (analogr == 0 && analogl == 0)
         {
-            YourAnimator.SetBool("shake", false);
-            text.SetBool("shaketext", false);
+
         }
     }
 
