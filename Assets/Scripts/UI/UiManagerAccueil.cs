@@ -11,6 +11,7 @@ public class UiManagerAccueil : MonoBehaviour {
     public float analogr = 0f;
     public float analogl = 0f;
     public bool go = false;
+
     public GameObject pauseMenu;
 
     public Text TimerText;
