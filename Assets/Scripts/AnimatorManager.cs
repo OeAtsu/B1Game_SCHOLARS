@@ -34,6 +34,7 @@ public class AnimatorManager : MonoBehaviour {
             {
                 MarbleScript.GetComponent<PlayerManager>().enabled = true;
                 Capsule.GetComponent<SphereCollider>().enabled = true;
+                GameManager.instance.timeStarted = true;
             }
         }
 

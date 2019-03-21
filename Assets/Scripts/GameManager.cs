@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public float G = 9f;
 
-    public static float timer = 300;
+    public float timer = 300;
     public string timerFormatted;
     public bool timeStarted = false;
 
