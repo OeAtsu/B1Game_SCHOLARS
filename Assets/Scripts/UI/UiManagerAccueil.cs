@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UiManagerAccueil : MonoBehaviour {
+public class UiManagerAccueil : MonoBehaviour
+{
 
     public Animator text;
     public Animator YourAnimator;
     public float analogr = 0f;
     public float analogl = 0f;
     public bool go = false;
+
     public GameObject pauseMenu;
 
     public Text TimerText;
@@ -21,7 +23,8 @@ public class UiManagerAccueil : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
     }
 
@@ -53,9 +56,10 @@ public class UiManagerAccueil : MonoBehaviour {
         {
             TogglePauseMenu();
         }
+
     }
 
-public void TogglePauseMenu()
+    public void TogglePauseMenu()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         if (pauseMenu.activeSelf)
@@ -68,9 +72,10 @@ public void TogglePauseMenu()
         }
     }
 
-public void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
         Debug.Log("bye");
     }
+
 }

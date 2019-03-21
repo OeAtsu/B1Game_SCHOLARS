@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
+
 {
     public static GameManager instance = null; //Singleton
 
@@ -11,13 +13,17 @@ public class GameManager : MonoBehaviour
     public OrbitCenterPlayer orbitCenterPlayer;
 
     public float G = 9f;
+    public GameObject gameOver;
 
     public float timer = 300;
     public string timerFormatted;
     public bool timeStarted = false;
+    public bool isFinish = false;
+
 
     public int Score;
     public int AmountBonusPoint = 20;
+
 
 
 
@@ -36,14 +42,14 @@ public class GameManager : MonoBehaviour
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
 
-    
+
     }
 
-        // Use this for initialization
-        void Start()
+    // Use this for initialization
+    void Start()
     {
         Score = 0;
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,15 +58,26 @@ public class GameManager : MonoBehaviour
         //TIMER
         // ATTTENTION A MODIF 
 
-        if (timeStarted == true)
+        if (timeStarted)
         {
             timer -= Time.deltaTime;
         }
 
-        if (timer <= 0)
+        if (timer <= 0 && timeStarted)
         {
+            timer = 0;
+            timeStarted = false;
             GameOver();
+            isFinish = true;
+            PlayerManager.instance.myState = PlayerManager.StatesOfGrav.OnGravCenter;
+            Debug.Log("end");
         }
+
+        if (Input.GetKeyDown(KeyCode.A) && !timeStarted)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
 
         float minutes = Mathf.Floor(timer / 60);
         float seconds = timer % 60;
@@ -73,9 +90,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-    void GameOver()
+    public void GameOver()
     {
-
+        gameOver.SetActive(!gameOver.activeSelf);
     }
 }

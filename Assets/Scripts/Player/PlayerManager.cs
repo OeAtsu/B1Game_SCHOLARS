@@ -56,39 +56,45 @@ public class PlayerManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         MyState();
-        if (!(Input.GetKeyDown(KeyCode.Space))) // Velocity control
+
+        if (!GameManager.instance.isFinish)
         {
-            Direction = gameObject.GetComponent<Rigidbody>().velocity.normalized;
-
-            gameObject.GetComponent<Rigidbody>().AddForce(Direction, ForceMode.Acceleration);
-
-            if (gameObject.GetComponent<Rigidbody>().velocity.magnitude > maxSpeed) // Limit max speed
+            if (!(Input.GetKeyDown(KeyCode.Space)) && (GameManager.instance.isFinish == true)) // Velocity control
             {
-                gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(gameObject.GetComponent<Rigidbody>().velocity, maxSpeed);
+                Direction = gameObject.GetComponent<Rigidbody>().velocity.normalized;
+
+                gameObject.GetComponent<Rigidbody>().AddForce(Direction, ForceMode.Acceleration);
+
+                if (gameObject.GetComponent<Rigidbody>().velocity.magnitude > maxSpeed) // Limit max speed
+                {
+                    gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(gameObject.GetComponent<Rigidbody>().velocity, maxSpeed);
+                }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space) && (myState == StatesOfGrav.OnGravCenter))
-        {
-         
-            myState = StatesOfGrav.Free; //Change l'etat du player en Free
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && (myState == StatesOfGrav.IsCleaning))
-        {
-            if (isGravObject == true)
+            if (Input.GetKeyDown(KeyCode.Space) && (myState == StatesOfGrav.OnGravCenter))
             {
 
                 myState = StatesOfGrav.Free; //Change l'etat du player en Free
             }
+
+            if (Input.GetKeyDown(KeyCode.Space) && (myState == StatesOfGrav.IsCleaning))
+            {
+                if (isGravObject == true)
+                {
+
+                    myState = StatesOfGrav.Free; //Change l'etat du player en Free
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) && (myState == StatesOfGrav.Free))
+            {
+                myState = StatesOfGrav.OnGravCenter; //Change l'etat du player en GravCenter
+            }
+
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && (myState == StatesOfGrav.Free))
-        {
-            myState = StatesOfGrav.OnGravCenter; //Change l'etat du player en GravCenter
-        }
 
         if ((myState == StatesOfGrav.IsCleaning))
         {
@@ -149,5 +155,5 @@ public class PlayerManager : MonoBehaviour
             isGravObject = true;
         }
     }
-    
+
 }
