@@ -11,6 +11,7 @@ public class UiManagerAccueil : MonoBehaviour {
     public float analogr = 0f;
     public float analogl = 0f;
     public bool go = false;
+    public GameObject pauseMenu;
 
     public Text TimerText;
     public string timer;
@@ -47,11 +48,29 @@ public class UiManagerAccueil : MonoBehaviour {
         {
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseMenu();
+        }
     }
 
+public void TogglePauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        if (pauseMenu.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
+        else if (!pauseMenu.activeSelf)
+        {
+            Time.timeScale = 1f;
+        }
+    }
 
 public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("bye");
     }
 }
